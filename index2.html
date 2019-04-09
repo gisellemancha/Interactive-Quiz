@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+ <title>Pie with Dropdown and JSON</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+<style>
+    
+    
+    #piechart {
+    height: 600px;
+    }
+     
+</style>
+</head>
+<body>
+ 
+  <form id="form1" name="form1" onchange="drawChart()" >
+     
+     <select id="thedropdown">
+     <option value="male">Male</option>
+     <option value="female">Female</option>
+     </select>
+    
+  </form>
+
+    <div id="piechart"></div>
+
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+     
+    function drawChart() {
+     mygender = document.getElementById("thedropdown").value; 
+     
+     info = [{gender: "male", yahoo: 63, google1: 69, apple: 68, cisco: 76, microsoft: 74},
+     {gender: "female", yahoo: 37, google1: 31, apple: 32, cisco: 24, microsoft: 26}
+     ];
+      
+    
+    for(i=0; i<info.length; i++) { 
+    if(mygender == info[i].gender) {
+       yahoo = info[i].yahoo;
+       google1 = info[i].google1;
+       apple = info[i].apple;
+       cisco = info[i].cisco;
+       microsoft = info[i].microsoft;
+    
+    }// end if
+    } // end for
+    
+    var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Week'],
+          ['Yahoo',     yahoo],
+          ['Google',      google1],
+          ['Apple',  apple],
+          ['Cisco', cisco],
+          ['Microsoft',    microsoft]
+        ]);
+        var options = {
+          title: 'Weekly Activities',
+          colors: ['orange','#00cc33', 'pink', 'red','lightblue']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('piechart'));
+        chart.draw(data, options);       
+      } 
+          
+    </script>  
+</body>
+</html>
