@@ -1,2 +1,2 @@
 # Interactive-Quiz
-I am creating this for my Coding and Data course 
+I made this for my Coding and Data Skills class at Texas State University. 
